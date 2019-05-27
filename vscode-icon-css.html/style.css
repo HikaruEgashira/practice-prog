@@ -1,0 +1,19 @@
+#vs1 {
+    clip-path: polygon(9% 30%, 80% 80%, 80% 100%, 0 40%);
+    background: linear-gradient(rgb(100, 255, 152), rgb(17, 109, 89));
+}
+#vs2 {
+    clip-path: polygon(82% 0, 82% 100%, 100% 90%, 100% 10%);
+    background-color: rgb(19, 161, 131);
+}
+#vs3 {
+    clip-path: polygon(9% 70%, 80% 20%, 80% 0%, 0 60%);
+    background-color: rgb(27, 158, 130);
+}
+.vscode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 500px;
+}
