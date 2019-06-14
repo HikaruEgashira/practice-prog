@@ -1,0 +1,3 @@
+#!/bin/sh
+wget --post-data="pageId=SB0070&action=downloadList&hdnFy=2019&hdnTermCode=&hdnDayCode=&hdnPeriodCode=&hdnAgentName=&hdnOrg=&hdnIsManager=&hdnReq=&hdnFac=&hdnDepth=&hdnChkSyllabi=false&hdnChkAuditor=false&hdnCourse=&hdnKeywords=&hdnFullname=&hdnDispDay=&hdnDispPeriod=&hdnOrgName=&hdnReqName=&cmbDwldtype=csv" https://kdb.tsukuba.ac.jp/ -O kdb.csv
+iconv -c -f sjis -t utf-8 kdb.csv -o kdb.csv
