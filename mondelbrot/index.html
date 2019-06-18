@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mandelbrot</title>
+    <style type="text/css"></style>
+  </head>
+  <body>
+      <h2 style="color: gray">複素関数論課題</h2>
+      <h1>マンデルブロ集合</h1>
+      <p>maked by Hikaru Egashira</p>
+    <canvas id="paper" height="360" width="360"></canvas>
+    <p id="time"></p>
+
+    <script type="text/javascript">
+      var canvas = document.getElementById("paper");
+      var c = canvas.getContext("2d");
+      var a = canvas.width;
+      var b = canvas.height;
+
+      /* create mandelbrot */
+      async function mandelbrot() {
+        var pre, pim, re, im; // pre, pim: xのpixelとyのpixel
+        var zmre = a / 4;
+        var zmim = b / 4;
+
+        // lim: 発散と認める値　times: 試行回数
+        var lim = 100;
+        var times = 20;
+
+        for (pim = 0; pim < a; pim++) {
+          for (pre = 0; pre < b; pre++) {
+            re = -2.0 + pre / zmre;
+            im = -2.0 + pim / zmim;
+
+            var reOld = re;
+            var imOld = im;
+
+            var r = 0;
+            var i;
+
+            for (i = 0; i < times; i++) {
+              var reNew = reOld * reOld - imOld * imOld - re;
+              var imNew = 2 * reOld * imOld - im;
+
+              // r = xn² + yn²
+              var r = reNew * reNew + imNew * imNew;
+
+              if (r > lim) {
+                break;
+              }
+
+              reOld = reNew;
+              imOld = imNew;
+            }
+
+            if (r < 4 || im == 0 || re == 0) {
+              c.fillStyle = "black";
+            } else {
+              c.fillStyle = "white";
+            }
+            c.fillRect(pre, pim, 1, 1);
+          }
+        }
+      }
+
+      var time = new Date();
+      mandelbrot().then(function () {
+        var time2 = new Date();
+        var p = document.getElementById("time");
+        p.innerHTML = `時間: ${time2 - time}ms`;
+      });
+    </script>
+  </body>
+</html>
